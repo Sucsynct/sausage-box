@@ -76,10 +76,11 @@ def controller_loop():
 
     if (current_milli_time() - millis >= 50):
         millis = current_milli_time()
-        front_pressed = False
-        back_pressed = False
-        right_pressed = False
-        left_pressed = False
+        GPIO.output(FRONT_LED_GPIO, GPIO.LOW)
+        GPIO.output(BACK_LED_GPIO,GPIO.LOW)
+        GPIO.output(RIGHT_LED_GPIO,GPIO.LOW)
+        GPIO.output(LEFT_LED_GPIO,GPIO.LOW)
+
 
     # if GPIO.input(BOTTOM_GPIO) and not bottom_pressed:
         # bottom_pressed = True
@@ -90,25 +91,29 @@ def controller_loop():
         # write_report(J_KEY)
         # write_report(NO_KEY)
     if front_pressed:
-        print(FRONT_LED_GPIO)
+        # print(FRONT_LED_GPIO)
         GPIO.output(FRONT_LED_GPIO, GPIO.HIGH)
         write_report(W_KEY)
         write_report(NO_KEY)
+        front_pressed = False
     if back_pressed:
-        print(BACK_LED_GPIO)
+        # print(BACK_LED_GPIO)
         GPIO.output(BACK_LED_GPIO, GPIO.HIGH)
         write_report(S_KEY)
         write_report(NO_KEY)
+        back_pressed = False
     if left_pressed:
-        print(LEFT_LED_GPIO)
+        # print(LEFT_LED_GPIO)
         GPIO.output(LEFT_LED_GPIO, GPIO.HIGH)
         write_report(A_KEY)
         write_report(NO_KEY)
+        left_pressed = False
     if right_pressed:
-        print(RIGHT_LED_GPIO)
+        # print(RIGHT_LED_GPIO)
         GPIO.output(RIGHT_LED_GPIO, GPIO.HIGH)
         write_report(D_KEY)
         write_report(NO_KEY)
+        right_pressed = False
 
 if __name__ == "__main__":
     # Macro definitions (but in python)
