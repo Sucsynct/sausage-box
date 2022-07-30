@@ -15,8 +15,9 @@ BACK_GPIO = 10
 FRONT_LED_GPIO = 5
 LEFT_LED_GPIO = 6
 RIGHT_LED_GPIO = 13
-BOTTOM_LED_GPIO = 19
-BACK_LED_GPIO = 26
+BACK_LED_GPIO = 19
+
+# BOTTOM_LED_GPIO = 26
 
 NO_KEY = 0x00
 W_KEY = 0x1a
@@ -90,13 +91,12 @@ def controller_loop():
         GPIO.output(BACK_LED_GPIO,GPIO.LOW)
         GPIO.output(RIGHT_LED_GPIO,GPIO.LOW)
         GPIO.output(LEFT_LED_GPIO,GPIO.LOW)
-        GPIO.output(BOTTOM_LED_GPIO, GPIO.LOW)
 
     if GPIO.input(BOTTOM_GPIO):
-        GPIO.output(FRONT_LED_GPIO, GPIO.HIGH)
-        GPIO.output(BACK_LED_GPIO, GPIO.HIGH)
-        GPIO.output(RIGHT_LED_GPIO, GPIO.HIGH)
-        GPIO.output(LEFT_LED_GPIO, GPIO.HIGH)
+        # GPIO.output(FRONT_LED_GPIO, GPIO.HIGH)
+        # GPIO.output(BACK_LED_GPIO, GPIO.HIGH)
+        # GPIO.output(RIGHT_LED_GPIO, GPIO.HIGH)
+        # GPIO.output(LEFT_LED_GPIO, GPIO.HIGH)
         write_report(J_KEY)
         write_report(NO_KEY)
     if front_pressed:
