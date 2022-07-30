@@ -1,6 +1,8 @@
 from unittest import case
 import RPi.GPIO as GPIO
 import time
+import sys
+import os
 #!/usr/bin/env python3
 
 # Macro definitions (but in python)
@@ -114,13 +116,16 @@ def controller_loop():
         write_report(D_KEY)
         write_report(NO_KEY)
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     try:
         gpio_setup()
-        controller_loop()
+        while True:
+            print("I'm here")
+            controller_loop()
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
         fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
         print(exc_type, fname, exc_tb.tb_lineno)
+
     finally:
         GPIO.cleanup()
